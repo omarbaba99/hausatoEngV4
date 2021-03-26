@@ -43,6 +43,11 @@ public class Word {
 		MimageResourceId = imageResourceId;
     }
 
+    public Word(String mDefaultTranslation, String mMiwokTranslation) {
+        this.mDefaultTranslation = mDefaultTranslation;
+        this.mMiwokTranslation = mMiwokTranslation;
+    }
+
     /**
      * Get the default translation of the word.
      */
