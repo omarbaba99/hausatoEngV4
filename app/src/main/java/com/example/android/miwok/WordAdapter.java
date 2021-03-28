@@ -65,8 +65,12 @@ public class WordAdapter extends ArrayAdapter<Word>  {
         // the default TextView.
         defaultTextView.setText(currentWord.getDefaultTranslation());
 		ImageView imageForWord = (ImageView) listItemView.findViewById(R.id.wordImage);
-		imageForWord.setImageResource(currentWord.getImageResourceId());
-
+		if (currentWord.hasImage()) {
+            imageForWord.setImageResource(currentWord.getImageResourceId());
+            imageForWord.setVisibility(View.VISIBLE);
+        } else {
+            imageForWord.setVisibility(View.GONE);
+        }
         // Return the whole list item layout (containing 2 TextViews) so that it can be shown in
         // the ListView.
         return listItemView;

@@ -21,6 +21,7 @@ package com.example.android.miwok;
  */
 public class Word {
 
+    private static final int NO_IMAGE = -1;
     /** Default translation for the word */
     private String mDefaultTranslation;
 
@@ -28,7 +29,7 @@ public class Word {
     private String mMiwokTranslation;
 	/** image*/
 	
-	private int MimageResourceId;
+	private int MimageResourceId = NO_IMAGE;
 
     /**
      * Create a new Word object.
@@ -46,6 +47,9 @@ public class Word {
     public Word(String mDefaultTranslation, String mMiwokTranslation) {
         this.mDefaultTranslation = mDefaultTranslation;
         this.mMiwokTranslation = mMiwokTranslation;
+    }
+    boolean hasImage() {
+        return MimageResourceId != NO_IMAGE;
     }
 
     /**
