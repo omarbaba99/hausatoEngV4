@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 package com.example.android.miwok;
-
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,15 +33,21 @@ import android.widget.*;
  */
 public class WordAdapter extends ArrayAdapter<Word>  {
 
+    private int colorResourceId;
+
+
     /**
      * Create a new {@link WordAdapter} object.
      *
      * @param context is the current context (i.e. Activity) that the adapter is being created in.
      * @param words is the list of {@link Word}s to be displayed.
      */
-    public WordAdapter(Context context, ArrayList<Word> words) {
+    public WordAdapter(Context context, ArrayList<Word> words,int mColorResourceid) {
         super(context, 0, words);
+        colorResourceId = mColorResourceid;
+
     }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -73,6 +81,14 @@ public class WordAdapter extends ArrayAdapter<Word>  {
         }
         // Return the whole list item layout (containing 2 TextViews) so that it can be shown in
         // the ListView.
+
+        View TextContainer = listItemView.findViewById(R.id.text_container);
+
+		int color = ContextCompat.getColor(getContext(),colorResourceId);
+
+		TextContainer.setBackgroundColor(color);
+
         return listItemView;
     }
+
 }

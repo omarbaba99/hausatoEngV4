@@ -20,6 +20,12 @@ package com.example.android.miwok;
  * It contains a default translation and a Miwok translation for that word.
  */
 public class Word {
+    public Word(String mDefaultTranslation, String mMiwokTranslation, int mImageResourceId,int mAudioResourceId) {
+        this.mDefaultTranslation = mDefaultTranslation;
+        this.mMiwokTranslation = mMiwokTranslation;
+        this.MimageResourceId = mImageResourceId;
+        this.mAudioResourceId = mAudioResourceId;
+    }
 
     private static final int NO_IMAGE = -1;
     /** Default translation for the word */
@@ -27,8 +33,13 @@ public class Word {
 
     /** Miwok translation for the word */
     private String mMiwokTranslation;
-	/** image*/
-	
+
+    public int getmAudioResourceId() {
+        return mAudioResourceId;
+    }
+
+    /** image*/
+	private int mAudioResourceId;
 	private int MimageResourceId = NO_IMAGE;
 
     /**
@@ -38,16 +49,14 @@ public class Word {
      *                           (such as English)
      * @param miwokTranslation is the word in the Miwok language
      */
-    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId) {
+    public Word(String defaultTranslation, String miwokTranslation, int AudioResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
-		MimageResourceId = imageResourceId;
+		mAudioResourceId = AudioResourceId;
     }
 
-    public Word(String mDefaultTranslation, String mMiwokTranslation) {
-        this.mDefaultTranslation = mDefaultTranslation;
-        this.mMiwokTranslation = mMiwokTranslation;
-    }
+
+
     boolean hasImage() {
         return MimageResourceId != NO_IMAGE;
     }
@@ -69,4 +78,13 @@ public class Word {
 		return MimageResourceId;
 	}
 
+    @Override
+    public String toString() {
+        return "Word{" +
+                "mDefaultTranslation='" + mDefaultTranslation + '\'' +
+                ", mMiwokTranslation='" + mMiwokTranslation + '\'' +
+                ", mAudioResourceId=" + mAudioResourceId +
+                ", MimageResourceId=" + MimageResourceId +
+                '}';
+    }
 }
