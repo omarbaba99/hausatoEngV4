@@ -15,6 +15,7 @@
  */
 package com.example.android.miwok;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -23,9 +24,11 @@ import android.support.v4.app.FragmentPagerAdapter;
  * Provides the appropriate {@link Fragment} for a view pager.
  */
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
-
+    private String tabTitles[] = new String[] { "Numbers", "Colors", "Family","Phrases" };
+    private Context context;
     public SimpleFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
+
     }
 
     @Override
@@ -39,6 +42,11 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
         } else {
             return new PhrasesFragment();
         }
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return tabTitles[position];
     }
 
     @Override
